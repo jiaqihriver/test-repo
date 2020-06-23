@@ -50,7 +50,8 @@ print("第三组计算得到的平均最小偏向角为 " + str(Decimal(z_3d).qu
 # 数据平均值（取四位小数）
 z = (z_1 + z_2 + z_3) / 3
 z_d = math.degrees(z)
-print(Decimal(z_d).quantize(Decimal("0.0000")))
+z_dd = Decimal(z_d).quantize(Decimal("0.0000"))
+print("最小偏向角平均值为" + str(z_dd))
 
 # 标准偏差
 s_1 = (z_1 - z) ** 2
@@ -58,7 +59,8 @@ s_2 = (z_2 - z) ** 2
 s_3 = (z_3 - z) ** 2
 s = math.sqrt((s_1 + s_2 + s_3) / 2)
 s_d = math.degrees(s)
-print(Decimal(s_d).quantize(Decimal("0.0000")))
+s_dd = Decimal(s_d).quantize(Decimal("0.0000"))
+print("最小偏向角的标准偏差为" + str(s_dd))
 
 # 坏值检验
 h_l = z - 3 * s
@@ -76,21 +78,27 @@ print(
 
 # 最小偏向角A类不确定度
 u_pa = 1.32 * s / math.sqrt(3)
-print(Decimal(u_pa).quantize(Decimal("0.0000")))
+u_pad = Decimal(u_pa).quantize(Decimal("0.0000"))
+print("最小偏向角A类不确定度为" + str(u_pad))
 
 # 最小偏向角总不确定度
 u_pb = 0.00017
 print("最小偏向角B类不确定度为" + str(u_pb))
 u_p = 2 * math.sqrt(u_pa ** 2 + u_pb ** 2)
-print(Decimal(u_p).quantize(Decimal("0.0000")))
+u_pd = Decimal(u_p).quantize(Decimal("0.0000"))
+print("最小偏向角总不确定度为" + str(u_pd))
 
 # 三棱镜折射率（四位小数）
 n = math.sin((z + math.pi / 3) / 2) * 2
-print(Decimal(n).quantize(Decimal("0.0000")))
+n_d = Decimal(n).quantize(Decimal("0.0000"))
+print("三棱镜折射率为" + str(n_d))
 
 # 三棱镜不确定度
 u_d = 0.00058
+print("三棱镜顶角的不确定度为" + str(u_d))
 p_na = -1 / 2 * math.sin(z / 2) * 4
 p_nz = math.cos((z + math.pi / 3) / 2)
 u_n = math.sqrt((p_na * u_d) * (p_na * u_d) + (p_nz * u_p) * (p_nz * u_p))
-print(Decimal(u_n).quantize(Decimal("0.0000")))
+u_nd = Decimal(u_n).quantize(Decimal("0.0000"))
+print("三棱镜不确定度为" + str(u_nd))
+
